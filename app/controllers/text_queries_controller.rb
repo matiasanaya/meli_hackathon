@@ -14,7 +14,8 @@ class TextQueriesController < ApplicationController
   # GET /text_queries/1.json
   def show
     @text_query = TextQuery.find(params[:id])
-
+     @stuff = @text_query.chart
+     @chart = @stuff[:chart]
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @text_query }

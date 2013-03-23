@@ -5,9 +5,14 @@
   <%= @text_query.text %>
 </p>
 
+<!-- <p>All Prices <%= @stuff[:prices] %></p>
+<p>AVG <%= @stuff[:avg_prices] %></p>
+<p>Count AVG <%= @stuff[:avg_prices].count %></p>
+<p>Amounts<%= @stuff[:amounts] %></p>
+<p>Count Amounts<%= @stuff[:amounts].count %></p> -->
+
 <p>
-  <b>Response:</b>
-  <%= @text_query.response %>
+  <%= high_chart('temperature_chart', @chart) %>
 </p>
 
 
