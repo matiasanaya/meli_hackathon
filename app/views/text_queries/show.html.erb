@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Text:</b>
+  <%= @text_query.text %>
+</p>
+
+<p>
+  <b>Response:</b>
+  <%= @text_query.response %>
+</p>
+
+
+<%= link_to 'Edit', edit_text_query_path(@text_query) %> |
+<%= link_to 'Back', text_queries_path %>
