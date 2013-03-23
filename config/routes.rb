@@ -1,4 +1,9 @@
 Mercadoanalytics::Application.routes.draw do
+  
+  get 'users/:id/authorize' => 'users#authorize'
+  resources :users
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
