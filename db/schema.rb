@@ -24,6 +24,13 @@ ActiveRecord::Schema.define(:version => 20130323165941) do
 
   add_index "consumer_tokens", ["token"], :name => "index_consumer_tokens_on_token", :unique => true
 
+  create_table "text_queries", :force => true do |t|
+    t.string   "text"
+    t.string   "response"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "users", :force => true do |t|
     t.string   "name"
     t.string   "password"

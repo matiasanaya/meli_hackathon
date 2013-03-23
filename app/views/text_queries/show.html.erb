@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Text:</b>
+  <%= @text_query.text %>
+</p>
+
+<!-- <p>All Prices <%= @stuff[:prices] %></p>
+<p>AVG <%= @stuff[:avg_prices] %></p>
+<p>Count AVG <%= @stuff[:avg_prices].count %></p>
+<p>Amounts<%= @stuff[:amounts] %></p>
+<p>Count Amounts<%= @stuff[:amounts].count %></p> -->
+
+<p>
+  <%= high_chart('temperature_chart', @chart) %>
+</p>
+
+
+<%= link_to 'Edit', edit_text_query_path(@text_query) %> |
+<%= link_to 'Back', text_queries_path %>

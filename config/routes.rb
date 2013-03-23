@@ -1,7 +1,11 @@
 Mercadoanalytics::Application.routes.draw do
+
   
   get 'users/:id/authorize' => 'users#authorize'
   resources :users
+
+  resources :text_queries
+
 
 
   # The priority is based upon order of creation:
