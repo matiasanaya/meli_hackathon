@@ -14,7 +14,9 @@
   <b>Has stock:</b>
   <%= @item.has_stock %>
 </p>
-
+<p>
+	<%= link_to 'Activar', url_for(:controller=>:items,:action=>:add_image_to_description,:id=>@item.id) %> 
+</p>
 <img src="http://localhost:3000/items/<%= @item.id.to_s %>.jpg">
 
 

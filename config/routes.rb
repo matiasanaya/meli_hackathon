@@ -2,6 +2,7 @@ Mercadoanalytics::Application.routes.draw do
 
   
   get 'items/:id/photo' => 'items#photo'
+  get 'items/:id/addimage' => 'items#add_image_to_description'
   resources :items
 
 

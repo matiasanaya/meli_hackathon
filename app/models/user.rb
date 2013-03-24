@@ -69,8 +69,8 @@ class User < ActiveRecord::Base
       self.save
   end
   
-  def refresh_token!
-    if self.access_token['expiration_time'] <= Time.now
+  def refresh_token!(forced = false)
+    if (self.access_token['expiration_time'] <= Time.now) || (forced == true)
       @client = User.new_client
       params = {
         grant_type: :refresh_token,
@@ -80,7 +80,10 @@ class User < ActiveRecord::Base
       }
 
       url = @client.token_url(params)
+ 
       response = @client.request(:post, url, OPTIONS)
+      
+   
       
       @hash = response.parsed
       raise OAuth2::Error.new(response) unless @hash.is_a?(Hash) && @hash["access_token"]
@@ -99,6 +102,7 @@ class User < ActiveRecord::Base
     
       self.save
     end
+    
   end
   
   def self.authenticate(name, password)
@@ -111,6 +115,7 @@ class User < ActiveRecord::Base
   
   def get(*args)
     refresh_token!
+   
     build_token(User.new_client,self.access_token).get(*args).response
   end
   
@@ -121,10 +126,19 @@ class User < ActiveRecord::Base
   
   def post(*args)
     refresh_token!
+      
     build_token(User.new_client,self.access_token).post(*args).response
+  end
+  def put_request(path, opts={}, &block)
+    refresh_token!
+      
+    build_token(User.new_client,self.access_token).request(:put,path, opts, &block).response
   end
   def post_json(url,params)
     post(url,:headers => {"Content-Type"=>'application/json',"Accept"=>'application/json'},:body=> params.to_json)
+  end
+  def put_json(url,params)
+    put_request(url,:headers => {"Content-Type"=>'application/json',"Accept"=>'application/json'},:body=> params.to_json)
   end
   def build_token(client, hash)
     OAuth2::AccessToken.from_hash(client, hash.merge(mode: :query, param_name: :access_token))

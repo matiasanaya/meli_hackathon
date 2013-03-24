@@ -5,9 +5,9 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
-    Item.get_all_for_user!(session[:user])
+    Item.get_all_for_user!(User.find(session[:user]))
 
-    @items = Item.where(:user_id => session[:user].id).all
+    @items = Item.where(:user_id => session[:user]).all
     
     respond_to do |format|
       format.html # index.html.erb
@@ -111,7 +111,7 @@ class ItemsController < ApplicationController
   def add_image_to_description
     @item = Item.find(params[:id])
     
-    @item.add_image_to_description!(session[:user])
+    @item.add_image_to_description!(User.find(session[:user]))
     
     respond_to do |format|
       format.html {redirect_to @item}

@@ -15,7 +15,8 @@ class UsersController < ApplicationController
 
   def login
     if request.post?
-      if session[:user] = User.authenticate(params[:name], params[:password])
+      if session[:user] = User.authenticate(params[:name], params[:password]).id
+        User.find(session[:user]).refresh_token!(true)
         flash[:message]  = "Bienvenido, " + params[:name] + '!'
         redirect_to_stored
       else

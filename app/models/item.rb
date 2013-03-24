@@ -8,10 +8,21 @@ class Item < ActiveRecord::Base
   end
   
   def add_image_to_description!(user)
-   # it= JSON.parse(user.get("/items/#{@meli_id}/descriptions").body)
     
-    description = "<p><img src=\"http://localhost:3000/items/#{@id}/photo.jpg\" alt=\"Informacion actualizada de stock\" height=\"480\" width=\"640\" data-src-original=\"http://localhost:3000/items/#{@id}/photo.jpg\"></p>"
-    user.post_json("/items/#{@meli_id}/descriptions",{:text=> description})
+    
+   it = JSON.parse(user.get("/items/#{self.meli_id}").body)
+   
+   description = "<p><img src=\"http://localhost:3000/items/#{self.id.to_s}/photo.jpg\" alt=\"Informacion actualizada de stock\" height=\"480\" width=\"640\"></p>"
+ 
+   
+    
+    if it['sold_quantity']>0
+      user.post_json("/items/#{self.meli_id}/descriptions",{"text"=> description})
+    else
+      desc= JSON.parse(user.get("/items/#{self.meli_id}/descriptions").body).first
+      desc["text"] = desc["text"] + description
+      user.put_json("/items/#{self.meli_id}/descriptions/#{desc["id"]}",desc)
+    end
     
     @stock_tracked = true
     self.save
