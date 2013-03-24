@@ -1,0 +1,20 @@
+<% if flash[:message] || flash[:warning] %>
+<div class="alert">
+	<button type="button" class="close" data-dismiss="alert">&times;</button>
+	<%= flash[:warning] ? flash[:warning] : flash[:message]%>
+</div>
+<% end %>
+
+<div class='row'>
+	<div class= "span4 offset4">	
+			<%= form_tag(:class=>'form') do %>
+				<%= label_tag(:name, "Nombre de usuario") %>
+				<%= text_field_tag(:username,nil,:class=>'input-block-level') %>
+				<br>
+				<%= label_tag(:password, "Password") %>
+				<%= password_field_tag(:password,nil,:class=>'input-block-level') %>
+				<br>
+				<%= submit_tag("Log In", :class=>"btn btn-block btn-primary") %>
+			<% end %>
+	</div>
+</div>

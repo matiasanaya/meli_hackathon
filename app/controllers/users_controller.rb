@@ -13,6 +13,23 @@ class UsersController < ApplicationController
     end
   end
 
+  def login
+    if request.post?
+      if session[:user] = User.authenticate(params[:name], params[:password])
+        flash[:message]  = "Bienvenido, " + params[:name] + '!'
+        redirect_to_stored
+      else
+        flash[:warning] = "Login incorrecto"
+      end
+    end
+  end
+
+  def logout
+    session[:user] = nil
+    flash[:message] = 'Desconectado.'
+    redirect_to :action => 'login'
+  end
+  
   # GET /users/1
   # GET /users/1.json
   def show
@@ -85,7 +102,7 @@ class UsersController < ApplicationController
   end
   
   def authorize_url(id)
-    "https://auth.mercadolibre.com.ar/authorization?response_type=code&client_id=#{User.client_id}&redirect_uri=#{callback_url(id)}"
+    "https://auth.mercadolibre.com.ar/authorization?response_type=code&client_id=#{User.client_id}&redirect_uri=#{ callback_url(id) }"
   end
   def self.callback_url(id)
     #url_for(:controller=> 'users', :action=>'authorize', :id=>id)
@@ -98,8 +115,10 @@ class UsersController < ApplicationController
   def authorize
     @user = User.find(params[:id])
     #https://api.mercadolibre.com
-    @user.get_access_token(params[:code])
+    @user.get_access_token!(params[:code])
+    @user.get_meli_user_id!
   
+    
     
     respond_to do |format|
       format.html { redirect_to users_url }

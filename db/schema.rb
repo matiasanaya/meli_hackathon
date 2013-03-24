@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130323165941) do
+ActiveRecord::Schema.define(:version => 20130324005706) do
 
   create_table "consumer_tokens", :force => true do |t|
     t.integer  "user_id"
@@ -23,6 +23,14 @@ ActiveRecord::Schema.define(:version => 20130323165941) do
   end
 
   add_index "consumer_tokens", ["token"], :name => "index_consumer_tokens_on_token", :unique => true
+
+  create_table "items", :force => true do |t|
+    t.string   "mercado_id"
+    t.integer  "user_id"
+    t.boolean  "has_stock"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "text_queries", :force => true do |t|
     t.string   "text"
@@ -38,6 +46,7 @@ ActiveRecord::Schema.define(:version => 20130323165941) do
     t.text     "access_token"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+    t.string   "meli_user_id"
   end
 
 end

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  mercado_id: MyString
+  user_id: 1
+  has_stock: false
+
+two:
+  mercado_id: MyString
+  user_id: 1
+  has_stock: false

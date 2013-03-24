@@ -1,6 +1,10 @@
 Mercadoanalytics::Application.routes.draw do
 
   
+  get 'items/:id/photo' => 'items#photo'
+  resources :items
+
+
   get 'users/:id/authorize' => 'users#authorize'
   resources :users
 

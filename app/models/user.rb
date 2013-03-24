@@ -1,6 +1,6 @@
 require 'oauth2'
 class User < ActiveRecord::Base
-  attr_accessible :access_token, :email, :name, :password
+  attr_accessible :access_token, :email, :name, :password, :meli_user_id
 
  
   serialize :access_token, Hash
@@ -36,7 +36,7 @@ class User < ActiveRecord::Base
     )
   end
   
-  def get_access_token(code)
+  def get_access_token!(code)
     
       @client = User.new_client
       params = {
@@ -68,7 +68,7 @@ class User < ActiveRecord::Base
       self.save
   end
   
-  def refresh_token
+  def refresh_token!
     if self.access_token['expiration_time'] <= Time.now
       @client = User.new_client
       params = {
@@ -100,16 +100,33 @@ class User < ActiveRecord::Base
     end
   end
   
+  def authenticate(name, password)
+    u=find(:first, :conditions=>["name = ?", name])
+    return nil if u.nil?
+    puts u.attributes
+    return u if u.password == password
+    nil
+  end
+  
   def get(*args)
-    refresh_token
+    refresh_token!
     build_token(User.new_client,self.access_token).get(*args).response
   end
   
+  def get_meli_user_id!
+    self.meli_user_id = JSON.parse(get('/users/me').body)['id']
+    self.save
+  end
+  
   def post(*args)
-    refresh_token
+    refresh_token!
     build_token(User.new_client,self.access_token).post(*args).response
+  end
+  def post_json(url,params)
+    post(url,:headers => {"Content-Type"=>'application/json',"Accept"=>'application/json'},:body=> params.to_json)
   end
   def build_token(client, hash)
     OAuth2::AccessToken.from_hash(client, hash.merge(mode: :query, param_name: :access_token))
   end
+  
 end
