@@ -107,7 +107,7 @@ class UsersController < ApplicationController
   end
   def self.callback_url(id)
     #url_for(:controller=> 'users', :action=>'authorize', :id=>id)
-    "http://localhost:3000/users/#{id}/authorize"
+    "http://mercadostock.herokuapp.com/users/#{id}/authorize"
   end
   def callback_url(id)
     url_for(:controller=> 'users', :action=>'authorize', :id=>id)

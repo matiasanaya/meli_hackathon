@@ -12,7 +12,7 @@ class Item < ActiveRecord::Base
     if !self.stock_tracked
        it = JSON.parse(user.get("/items/#{self.meli_id}").body)
        
-       description = "<p><img src=\"http://localhost:3000/items/#{self.id.to_s}/photo.jpg\" alt=\"Informacion actualizada de stock\" height=\"480\" width=\"640\"></p>"
+       description = "<p><img src=\"http://mercadostock.herokuapp.com/items/#{self.id.to_s}/photo.jpg\" alt=\"Informacion actualizada de stock\" height=\"480\" width=\"640\"></p>"
      
        
         
