@@ -1,26 +1,33 @@
-h1, h2, h3, h4, h5, h6, p {
-	color: rgb(52, 73, 94);
+.row h1, .columns h5 {
+	color: #f8f8f8;
+	/*rgb(52, 73, 94);*/
 }
 
-body {
-	/*margin: 0px;*/
-	/*padding: 0px;*/
+.columns h3 {
+	color: white;  
 }
 
-.container-fluid{
-	/*background-color: #F1C40F;*/
+#nav {
+	background-color: #1ABC9C;
+	margin-bottom: 2px;
 }
 
-.temp-top {
-	/*background-color: #F39C12;*/
+.status {
+	/*padding-bottom: 5%;*/
+	background-color: #2ECC71;
 }
 
-.listing {
-	/*background-color: #2ECC71;*/
-	/*margin-top: 2px;*/
-	/*padding: 2%;	*/
+.status h5 {
+	/*margin-top: 15px;*/
 }
 
-.huge-btn {
-	height: 100px;
+.title {
+	/*padding-top: 5%;*/
+	/*padding-bottom: 5%;*/
+	background-color: #27AE60;
+}
+
+.item {
+	background-color: #2ECC71;
+	margin-bottom: 2px;
 }
