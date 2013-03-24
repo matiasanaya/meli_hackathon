@@ -1,10 +1,14 @@
-.row h1, .columns h5 {
+h1, h2, h3, h4, h5 ,h6 ,p ,.row h3, .row h1, .row h5, .columns h5 {
 	color: #f8f8f8;
 	/*rgb(52, 73, 94);*/
 }
 
 .columns h3 {
 	color: white;  
+}
+
+.header {
+	background-color: #16A085;
 }
 
 #nav {
