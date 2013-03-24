@@ -1,46 +1,51 @@
-<div class="listing">
-  <div class="row title">
-    <h1><%= @item.meli_title %></h1>
+<div id="nav">
+  <div class="row">
+    <div class="two mobile-one columns"><h3><i class="general foundicon-left-arrow"></i></h3></div>
+    <div class="ten mobile-three columns"><h3 style="margin-left:30px;">Details</h3></div>
   </div>
-  <div class="row gadgets">
-    <div class="four columns">
-      <div class="panel">
-          <h3 class="text-center">Notificar</h3>
-        <div class="paleta">
-          <div class="row">
-            <div class="six mobile-two columns"><a href="" class="button">Hay</a></div>
-            <div class="six mobile-two columns"><a href="" class="button">No hay</a></div>
-          </div>
-        </div>
+</div>
+
+<div class="listing">
+  <div class="row header" style="margin-bottom:2px;">
+    <div class="twelve columns">
+      <h5><%= @item.meli_title %></h5>
+    </div>
+  </div>
+  <div class="row">
+    <div class="four columns status item">
+      <div class="row">
+        <div class="eight mobile-three columns"><h3 class="text-center">Status</h3></div>
+        <div class="four mobile-one columns"><h3 class="text-center"><i class="general foundicon-<%= 'checkmark' if @item.has_stock %><%= 'remove' if !@item.has_stock %>"></i></h3></div>
+      </div>
+      <div class="row title">
+        <a href=""><div class="twelve columns"><h5 class="text-center">Toggle</h5></div></a>
       </div>
     </div>
-    <div class="four columns">
-      <div class="panel">
-        <div class="row">
-          <div class="eight mobile-three columns"><h3 class="text-center">Stock ML:</h3></div>
-          <div class="four mobile-one columns"><h3 id="meli_val"><%= @item.meli_stock %></h3></div>
-        </div>
-        <div class="palette palette-firm-dark">
-          <div class="row">
-            <div class="six mobile-two columns"><a href="" class="button">-</a></div>
-            <div class="six mobile-two columns"><a href="" class="button">+</a></div>
-          </div>
-        </div>
+    <div class="four columns status item">
+      <div class="row">
+        <div class="eight mobile-three columns"><h3 class="text-center">Stock ML</h3></div>
+        <div class="four mobile-one columns"><h3 class="text-center"><%= @item.meli_stock %></h3></div>
+      </div>
+      <div class="row title">
+        <div class="six mobile-two columns"><a href=""><h5 class="text-center"><i class="general foundicon-minus"></i></h5></a></div>
+        <div class="six mobile-two columns"><a href=""><h5 class="text-center"><i class="general foundicon-plus"></i></h5></a></div>
       </div>
     </div>
-    <div class="four columns">
-      <div class="panel">
-        <div class="row">
-          <div class="eight mobile-three columns"><h3 class="text-center">Stock Real:</h3></div>
-          <div class="four mobile-one columns"><h3><%= @item.real_stock %></h3></div>
-        </div>
-        <div class="paleta">
-          <div class="row">
-            <div class="six mobile-two columns"><a href="" class="button">-</a></div>
-            <div class="six mobile-two columns"><a href="" class="button">+</a></div>
-          </div>
-        </div>
+    <div class="four columns status item">
+      <div class="row">
+        <div class="eight mobile-three columns"><h3 class="text-center">Stock Real</h3></div>
+        <div class="four mobile-one columns"><h3 class="text-center"><%= @item.real_stock %></h3></div>
+      </div>
+      <div class="row title">
+        <div class="six mobile-two columns"><a href=""><h5 class="text-center"><i class="general foundicon-minus"></i></h5></a></div>
+        <div class="six mobile-two columns"><a href=""><h5 class="text-center"><i class="general foundicon-plus"></i></h5></a></div>
       </div>
     </div>
+  </div>
+  <div class="row" style="margin-bottom:2px; background-color: #16A085;">
+    <a href=""><h5 class="text-center">Imprimir QR</h5></a>
+  </div>
+  <div class="row" style="margin-bottom:2px; background-color: #16A085;">
+    <div class="twelve columns"><a href=""><h5 class="text-center">Ir a MercadoLibre</h5></a></div>
   </div>
 </div>
