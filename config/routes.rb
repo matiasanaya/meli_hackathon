@@ -8,14 +8,10 @@ Mercadoanalytics::Application.routes.draw do
   get 'items/:id/photo' => 'items#photo'
   resources :items
 
-
   get 'users/:id/authorize' => 'users#authorize'
   resources :users
   match '/login' => 'users#login'
   match '/logout' => 'users#logout'
-  resources :text_queries
-
-
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

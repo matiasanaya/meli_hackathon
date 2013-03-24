@@ -1,22 +1,46 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Mercado:</b>
-  <%= @item.meli_id %>
-</p>
-
-<p>
-  <b>User:</b>
-  <%= @item.user_id %>
-</p>
-
-<p>
-  <b>Has stock:</b>
-  <%= @item.has_stock %>
-</p>
-
-<img src="http://localhost:3000/items/<%= @item.id.to_s %>.jpg">
-
-
-<%= link_to 'Edit', edit_item_path(@item) %> |
-<%= link_to 'Back', items_path %>
+<div class="listing">
+  <div class="row title">
+    <h1><%= @item.meli_title %></h1>
+  </div>
+  <div class="row gadgets">
+    <div class="four columns">
+      <div class="panel">
+          <h3 class="text-center">Notificar</h3>
+        <div class="paleta">
+          <div class="row">
+            <div class="six mobile-two columns"><a href="" class="button">Hay</a></div>
+            <div class="six mobile-two columns"><a href="" class="button">No hay</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="four columns">
+      <div class="panel">
+        <div class="row">
+          <div class="eight mobile-three columns"><h3 class="text-center">Stock ML:</h3></div>
+          <div class="four mobile-one columns"><h3 id="meli_val"><%= @item.meli_stock %></h3></div>
+        </div>
+        <div class="palette palette-firm-dark">
+          <div class="row">
+            <div class="six mobile-two columns"><a href="" class="button">-</a></div>
+            <div class="six mobile-two columns"><a href="" class="button">+</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="four columns">
+      <div class="panel">
+        <div class="row">
+          <div class="eight mobile-three columns"><h3 class="text-center">Stock Real:</h3></div>
+          <div class="four mobile-one columns"><h3><%= @item.real_stock %></h3></div>
+        </div>
+        <div class="paleta">
+          <div class="row">
+            <div class="six mobile-two columns"><a href="" class="button">-</a></div>
+            <div class="six mobile-two columns"><a href="" class="button">+</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

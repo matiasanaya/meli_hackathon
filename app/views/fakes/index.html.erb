@@ -1,14 +1,15 @@
-<% lorem = 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip' %>
-
 <div class="container">
 	<div class="row">
 		<div class="ten mobile-three columns"><h6>Title</h6></div>
 		<div class="two mobile-one columns"><h6>Status</h6></div>
 	</div>
+	<% @items.each do |item| %>
 	<div class="panel">
+		<a href="<%= item_path item %>">
 		<div class="row">
-			<div class="ten mobile-three columns"><h5><%= lorem.truncate(rand(20) + 40, omission: '') %></h5></div>
-			<div class="two mobile-one columns"><h3><i class="general foundicon-checkmark"></i><h3></div>
-		</div>
+				<div class="ten mobile-three columns"><h5><%= item.meli_title %></h5></div>
+				<div class="two mobile-one columns"><h3><i class="general foundicon-<%= 'checkmark' if item.has_stock %><%= 'remove' unless item.has_stock %>"></i><h3></div>
+		</div></a>
 	</div>
+	<% end %>
 </div>
