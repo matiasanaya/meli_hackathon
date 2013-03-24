@@ -1,21 +1,21 @@
 <div id="nav">
 	<div class="row">
-		<h1 class="text-center">MercadoHacks</h1>
+		<h2 class="text-center">MercadoHacks</h2>
 	</div>
 </div>
 <% @items.each do |item| %>
 <div class="item">
-	<a href="<%= item_path item %>">
 		<div class="row">
 			<div class="ten mobile-three columns title">
+				<a href="<%= item_path item %>">
 					<h5><%= item.meli_title %></h5>
+					</a>
 			</div>
-			<a href="">
 				<div class="two mobile-one columns status">
+					<a href="">
 						<h3 class="text-center"><i class="general foundicon-<%= 'checkmark' if item.has_stock && item.stock_tracked %><%= 'remove' if !item.has_stock && item.stock_tracked%><%= 'settings' if !item.stock_tracked %>"></i></h3>
+						</a>
 				</div>
-			</a>
 		</div>
-	</a>
 </div>
 <% end %>

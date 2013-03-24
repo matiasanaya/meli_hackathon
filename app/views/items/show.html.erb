@@ -1,29 +1,32 @@
 <div id="nav">
   <div class="row">
-    <div class="two mobile-one columns"><h3><i class="general foundicon-left-arrow"></i></h3></div>
-    <div class="ten mobile-three columns"><h3 style="margin-left:30px;">Details</h3></div>
+    <div class="two mobile-one columns"><a href=""><h3><i class="general foundicon-left-arrow"></i></h3></a></div>
+    <div class="ten mobile-three columns"><h3 class="show-for-small" style="margin-left:18%;">Detalles</h3><h3 class="hide-for-small" style="margin-left:30%;">Detalles</h3></div>
   </div>
 </div>
 
 <div class="listing">
+  <div class="hide-for-small" style="margin-top:50px;"></div>
   <div class="row header" style="margin-bottom:2px;">
     <div class="twelve columns">
       <h5><%= @item.meli_title %></h5>
     </div>
   </div>
+  <div class="hide-for-small" style="margin-top:50px;"></div>
+<% if @item.stock_tracked %>
   <div class="row">
-    <div class="four columns status item">
+    <div class="three offset-by-one columns status item">
       <div class="row">
-        <div class="eight mobile-three columns"><h3 class="text-center">Status</h3></div>
-        <div class="four mobile-one columns"><h3 class="text-center"><i class="general foundicon-<%= 'checkmark' if @item.has_stock %><%= 'remove' if !@item.has_stock %>"></i></h3></div>
+        <div class="eight mobile-three columns"><h3 class="text-center">status</h3></div>
+        <div class="four mobile-one columns"><h4 class="text-center"><i class="general foundicon-<%= 'checkmark' if @item.has_stock %><%= 'remove' if !@item.has_stock %>"></i></h4></div>
       </div>
       <div class="row title">
-        <a href=""><div class="twelve columns"><h5 class="text-center">Toggle</h5></div></a>
+        <a href=""><div class="twelve columns"><h5 class="text-center" style="font-size:19px;">Toggle</h5></div></a>
       </div>
     </div>
-    <div class="four columns status item">
+    <div class="three offset-by-one columns status item">
       <div class="row">
-        <div class="eight mobile-three columns"><h3 class="text-center">Stock ML</h3></div>
+        <div class="eight mobile-three columns"><h3 class="text-center">stock ML</h3></div>
         <div class="four mobile-one columns"><h3 class="text-center"><%= @item.meli_stock %></h3></div>
       </div>
       <div class="row title">
@@ -31,9 +34,9 @@
         <div class="six mobile-two columns"><a href=""><h5 class="text-center"><i class="general foundicon-plus"></i></h5></a></div>
       </div>
     </div>
-    <div class="four columns status item">
+    <div class="three offset-by-one columns status item">
       <div class="row">
-        <div class="eight mobile-three columns"><h3 class="text-center">Stock Real</h3></div>
+        <div class="eight mobile-three columns"><h3 class="text-center show-for-small">stock real</h3><h3 class="hide-for-small">stock real</h3></div>
         <div class="four mobile-one columns"><h3 class="text-center"><%= @item.real_stock %></h3></div>
       </div>
       <div class="row title">
@@ -42,10 +45,18 @@
       </div>
     </div>
   </div>
-  <div class="row" style="margin-bottom:2px; background-color: #16A085;">
-    <a href=""><h5 class="text-center">Imprimir QR</h5></a>
-  </div>
-  <div class="row" style="margin-bottom:2px; background-color: #16A085;">
-    <div class="twelve columns"><a href=""><h5 class="text-center">Ir a MercadoLibre</h5></a></div>
+  <div class="hide-for-small" style="margin-top:50px;"></div>
+  <div class="row">
+    <div class="five columns" style="margin-bottom:2px; background-color: #16A085;"><a href=""><h5 class="text-center">Imprimir QR</h5></a></div>
+    <div class="five offset-by-two columns" style="margin-bottom:2px; background-color: #16A085;"><a href=""><h5 class="text-center">Ir a MercadoLibre</h5></a></div>
   </div>
 </div>
+<% else %>
+  <div class="row">
+    <a href="">
+      <div class="eight columns status item centered">
+        <div class="megamo"><h1 class="text-center">Activar</h1></div>
+      </div>
+    </a>
+  </div>
+<% end %>
