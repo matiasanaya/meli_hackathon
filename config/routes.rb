@@ -7,7 +7,8 @@ Mercadoanalytics::Application.routes.draw do
 
   get 'users/:id/authorize' => 'users#authorize'
   resources :users
-
+  match '/login' => 'users#login'
+  match '/logout' => 'users#logout'
   resources :text_queries
 
 

@@ -44,3 +44,5 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'debugger'
+gem 'rqrcode-rails3'
+gem 'mini_magick'

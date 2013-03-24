@@ -100,7 +100,7 @@ class User < ActiveRecord::Base
     end
   end
   
-  def authenticate(name, password)
+  def self.authenticate(name, password)
     u=find(:first, :conditions=>["name = ?", name])
     return nil if u.nil?
     puts u.attributes

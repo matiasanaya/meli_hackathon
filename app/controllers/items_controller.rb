@@ -1,9 +1,14 @@
 class ItemsController < ApplicationController
+  
+  before_filter :login_required, :only => ['show','index','new','edit','create','destroy','add_image_to_description']
+  
   # GET /items
   # GET /items.json
   def index
-    @items = Item.get_for_user
+    Item.get_all_for_user!(session[:user])
 
+    @items = Item.where(:user_id => session[:user].id).all
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @items }
@@ -18,6 +23,7 @@ class ItemsController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @item }
+      format.jpg { render :qrcode => request.url }
     end
   end
 
