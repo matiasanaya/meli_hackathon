@@ -19,7 +19,8 @@ class ItemsController < ApplicationController
   # GET /items/1.json
   def show
     @item = Item.find(params[:id])
-
+    @item.update_from_meli!(User.find(session[:user]))
+    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @item }
@@ -112,6 +113,18 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     
     @item.add_image_to_description!(User.find(session[:user]))
+    
+    respond_to do |format|
+      format.html {redirect_to @item}
+      format.json {render json: @item}
+    end
+  end
+  
+  def modify_from_page
+    @item = Item.find(params[:id])
+    
+    @item.modify_stuff!(User.find(session[:user]),params[:modify_action])
+   
     
     respond_to do |format|
       format.html {redirect_to @item}

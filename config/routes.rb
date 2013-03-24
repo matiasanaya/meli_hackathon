@@ -5,6 +5,7 @@ Mercadoanalytics::Application.routes.draw do
   get 'test' => 'fakes#test'
   get 'index' => 'fakes#index'
   
+  get 'items/:id/modify' => 'items#modify_from_page'
   get 'items/:id/photo' => 'items#photo'
   get 'items/:id/addimage' => 'items#add_image_to_description'
   resources :items
