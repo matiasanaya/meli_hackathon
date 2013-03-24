@@ -38,6 +38,7 @@ class User < ActiveRecord::Base
   
   def get_access_token!(code)
     
+      # basado en github.com/kevinjhanna/mercadoauth
       @client = User.new_client
       params = {
         code: code,
