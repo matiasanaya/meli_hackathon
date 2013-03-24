@@ -70,7 +70,7 @@ class User < ActiveRecord::Base
   end
   
   def refresh_token!(forced = false)
-    if (self.access_token['expiration_time'] <= (Time.now - 3600.seconds)) || (forced == true)
+    if (self.access_token['expiration_time'] <= (Time.now + 3600.seconds)) || (forced == true)
       @client = User.new_client
       params = {
         grant_type: :refresh_token,
