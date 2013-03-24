@@ -1,36 +1,36 @@
 <div id="nav">
-	<div class="row">
-		<h2 class="text-center">MercadoHacks</h2>
-	</div>
+  <div class="row">
+    <h2 class="text-center">MercadoStock</h2>
+  </div>
 </div>
 <% @items.each do |item| %>
 <div class="hide-for-small" style="margin-top:25px;"></div>
 <div class="show-for-small item" style="background-color:#27AE60;">
-		<div class="row">
-			<div class="ten mobile-three columns title">
-				<a href="<%= item_path item %>">
-					<h5><%= item.meli_title %></h5>
-					</a>
-			</div>
-				<div class="two mobile-one columns status">
-					<a href="">
-							<h3 class="text-center" style="font-size:31px;"><i class="general foundicon-<%= 'checkmark' if item.has_stock && item.stock_tracked %><%= 'remove' if !item.has_stock && item.stock_tracked%><%= 'settings' if !item.stock_tracked %>"></i></h3>
-						</a>
-				</div>
-		</div>
+    <div class="row">
+      <div class="ten mobile-three columns title">
+        <a href="<%= item_path item %>">
+          <h5><%= item.meli_title %></h5>
+          </a>
+      </div>
+        <div class="two mobile-one columns status">
+          <a href="<%= item.stock_tracked ? (url_for(:controller => 'items', :action => 'modify_from_page', :id => item.id,:modify_action => (item.has_stock ? 'mark_no_stock' : 'mark_stock'))) : url_for(item) %>">
+            <h3 class="text-center" style="font-size:31px;"><i class="general foundicon-<%= 'checkmark' if item.has_stock && item.stock_tracked %><%= 'remove' if !item.has_stock && item.stock_tracked%><%= 'settings' if !item.stock_tracked %>"></i></h3>
+            </a>
+        </div>
+    </div>
 </div>
 <div class="hide-for-small item">
-		<div class="row">
-			<div class="ten mobile-three columns title">
-				<a href="<%= item_path item %>">
-					<h5><%= item.meli_title %></h5>
-					</a>
-			</div>
-				<div class="two mobile-one columns status">
-					<a href="">
-							<h5 class="text-center" style="font-size:16px"><i class="general foundicon-<%= 'checkmark' if item.has_stock && item.stock_tracked %><%= 'remove' if !item.has_stock && item.stock_tracked%><%= 'settings' if !item.stock_tracked %>"></i></h5>
-						</a>
-				</div>
-		</div>
+  <div class="row">
+      <div class="ten mobile-three columns title">
+        <a href="<%= item_path item %>">
+          <h5><%= item.meli_title %></h5>
+          </a>
+      </div>
+        <div class="two mobile-one columns status">
+          <a href="<%= item.stock_tracked ? (url_for(:controller => 'items', :action => 'modify_from_page', :id => item.id,:modify_action => (item.has_stock ? 'mark_no_stock' : 'mark_stock'))) : url_for(item) %>">
+            <h5 class="text-center" style="font-size:16px"><i class="general foundicon-<%= 'checkmark' if item.has_stock && item.stock_tracked %><%= 'remove' if !item.has_stock && item.stock_tracked%><%= 'settings' if !item.stock_tracked %>"></i></h5>
+            </a>
+        </div>
+    </div>
 </div>
 <% end %>
