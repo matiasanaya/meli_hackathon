@@ -99,5 +99,10 @@ class Item < ActiveRecord::Base
     
     self.save
   end
+  
+  def get_listing_url(user)
+    item_info = JSON.parse(user.get("/items/#{self.meli_id}").body)
+    item_info['permalink']
+  end
 end
 

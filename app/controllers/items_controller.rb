@@ -132,4 +132,19 @@ class ItemsController < ApplicationController
     end
   end
   
+  def print_qr
+    @item = Item.find(params[:id])
+    
+    respond_to do |format|
+      format.html
+    end
+  end
+  
+  def see_listing
+    @item = Item.find(params[:id])
+    respond_to do |format|
+      format.html {redirect_to @item.get_listing_url(User.find(session[:user]))}
+    end
+  end
+  
 end
