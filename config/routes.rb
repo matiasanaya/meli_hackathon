@@ -1,18 +1,18 @@
 Mercadoanalytics::Application.routes.draw do
 
+  root :to => 'fakes#test'
+
+  get 'test' => 'fakes#test'
+  get 'index' => 'fakes#index'
   
   get 'items/:id/photo' => 'items#photo'
   get 'items/:id/addimage' => 'items#add_image_to_description'
   resources :items
 
-
   get 'users/:id/authorize' => 'users#authorize'
   resources :users
   match '/login' => 'users#login'
   match '/logout' => 'users#logout'
-  resources :text_queries
-
-
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
