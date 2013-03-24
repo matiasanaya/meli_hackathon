@@ -1,6 +1,6 @@
 Mercadoanalytics::Application.routes.draw do
 
-  root :to => 'fakes#test'
+  root :to => 'items#index'
 
   get 'test' => 'fakes#test'
   get 'index' => 'fakes#index'
