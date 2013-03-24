@@ -1,7 +1,7 @@
 <div id="nav">
   <div class="row">
-    <div class="two mobile-one columns"><h3><i class="general foundicon-left-arrow"></i></h3></div>
-    <div class="ten mobile-three columns"><h3 style="margin-left:30px;">Details</h3></div>
+    <div class="two mobile-one columns"><a href=""><h3><i class="general foundicon-left-arrow"></i></h3></a></div>
+    <div class="ten mobile-three columns"><h3 style="margin-left:30px;">Detalles</h3></div>
   </div>
 </div>
 
@@ -11,6 +11,7 @@
       <h5><%= @item.meli_title %></h5>
     </div>
   </div>
+<% if @item.stock_tracked %>
   <div class="row">
     <div class="four columns status item">
       <div class="row">
@@ -49,3 +50,12 @@
     <div class="twelve columns"><a href=""><h5 class="text-center">Ir a MercadoLibre</h5></a></div>
   </div>
 </div>
+<% else %>
+  <div class="row">
+    <a href="">
+      <div class="eight columns status item centered">
+        <div class="megamo"><h1 class="text-center">Activar</h1></div>
+      </div>
+    </a>
+  </div>
+<% end %>

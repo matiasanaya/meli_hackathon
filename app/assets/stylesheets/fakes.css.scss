@@ -1,10 +1,18 @@
-h1, h2, h3, h4, h5 ,h6 ,p ,.row h3, .row h1, .row h5, .columns h5 {
+h1, h2, h3, h4, h5 ,h6 ,p ,.row h3, .row h1, .row h2, .row h5, .columns h5 {
 	color: #f8f8f8;
 	/*rgb(52, 73, 94);*/
 }
 
 .columns h3 {
 	color: white;  
+}
+
+.megamo {
+	margin-top: 5%;
+	margin-bottom: 5%;
+	padding-top: 7%;
+	padding-bottom: 7%;
+	background-color: #27AE60;
 }
 
 .header {
