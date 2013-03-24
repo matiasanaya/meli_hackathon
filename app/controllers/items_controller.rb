@@ -24,7 +24,7 @@ class ItemsController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @item }
-      format.jpg { render :qrcode => "10.10.12.90:3000/items/#{@item.id.to_s}" }
+      format.jpg { render :qrcode => "mercadostock.herokuapp.com/items/#{@item.id.to_s}" }
     end
   end
 
